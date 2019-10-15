@@ -9,48 +9,25 @@ const Form = () => {
     const [meal, setMeal] = useState("");
     const [parking, setParking] = useState("");
 
-    function payingTransp (n){
+    
+    function paying (n, limit, BFactor, SFactor) {
         let toPay = 0
         if (!isNaN(n)){
-            if (n <= 100){
-                toPay = n * 0.12
+            if (n <= limit){
+                toPay = n * BFactor
             } else {
-                toPay = (((n - 100) * 0.08) + 12).toFixed(2)
+                toPay = (((n - limit) * SFactor) + (n * BFactor)).toFixed(2)
             }
         }
-        return toPay;
-    };
-
-    function payingMeal (n){
-        let toPay = 0
-        if (!isNaN(n)){
-            n = Math.floor(n)
-            if (n <= 3){
-                toPay = n * 10
-            } else {
-                toPay = (((n - 3) * 6) + 30).toFixed(2)
-            }
-        }
-        return toPay;
-    };
-
-    function payingParking (n) {
-        let toPay = 0
-        if (!isNaN(n)){
-            if (n <= 20){
-                toPay = n * 1 
-            } else {
-                toPay = (((n - 20) * 0.50) + 20).toFixed(2)
-            }
-        }
-        return toPay;
-    };
+        return toPay
+    }
 
 
     
-    const toPayTransp = payingTransp(transportation)
-    const toPayMeal = payingMeal(meal)
-    const toPayParking = payingParking(parking)
+    
+    const toPayTransp = paying (transportation, 100, 0.12, 0.08)
+    const toPayMeal = paying (meal, 3, 10, 6)
+    const toPayParking = paying (parking, 20, 1, 0.5)
     const toPayTotal = (toPayTransp * 1) + (toPayMeal * 1) + (toPayParking * 1)
   
 
