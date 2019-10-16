@@ -12,7 +12,7 @@ export default (props) => (
         <div className="input-group-append">
             <span className="input-group-text">{props.role}</span>
         </div>
-        <span className="col-sm-2 ml-3 text-right">A pagar: { props.vari } $</span>
+        <span className="col-sm-2 ml-3 text-right">A pagar: {props.vari} $</span>
         {isNaN(props.value) && (
             <p className="text-danger">Por favor, introduzca un número válido</p>
         )}
