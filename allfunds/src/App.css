@@ -7,7 +7,8 @@
 .container{
   border: solid darkblue 1px;
   Color:  #0D4781;
-  border-radius: 10px
+  border-radius: 10px;
+  
 }
 h1{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
