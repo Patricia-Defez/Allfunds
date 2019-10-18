@@ -1,12 +1,19 @@
-/* .App {
-  text-align: center;
-} */
+
 .navbar{
-  background-color: #288AEB !important;
+  background-color: #0D4781 !important;
   height: 100px;
 }
 
-
+.container{
+  border: solid darkblue 1px;
+  Color:  #0D4781;
+  border-radius: 10px
+}
+h1{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;  
+  
+}
 
 
 

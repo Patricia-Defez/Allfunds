@@ -18,7 +18,7 @@ const Form = () => {
             if (n <= limit) {
                 toPay = n * BFactor
             } else {
-                toPay = (((n - limit) * SFactor) + (n * BFactor)).toFixed(2)
+                toPay = (((n - limit) * SFactor) + (limit * BFactor)).toFixed(2)
             }
         }
         return toPay
@@ -33,27 +33,28 @@ const Form = () => {
     return (
         <div className="box mx-auto p-5">
             <div className="container  p-5">
-                <div className=" mx-auto m-5 p-5 ">
+                <h1 className="text-center">Gestion de Dietas</h1>
+                <div className="marco mx-auto m-5 p-5 ">
                     <div className="row mb-3">
-                        <FormField title="Desplazamientos" name="transportation" role="Kms" vari={toPayTransp}
+                        <FormField title="Desplazamientos" name="transportation" role="Kms" vari={toPayTransp} data-testid="transp-input"
                             value={transportation}
                             onChange={e => setTransportation(e.target.value)} />
-                        <button type="button"  className="btn btn-info  btn-sm " onClick={useCallback(() => setTransportation(initialValue), [initialValue])}>Reset</button>    
+                        <button type="button" data-testid="transp-reset" className="btn btn-info  btn-sm " onClick={useCallback(() => setTransportation(initialValue), [initialValue])}>Reset</button>    
                     </div>
                     
                     <div className="row mb-3">
-                        <FormField title="Nº de comidas" name="meal" role="" vari={toPayMeal}
+                        <FormField title="Nº de comidas" name="meal" role="Uds." vari={toPayMeal} data-testid="meal-inputl"
                             value={meal}
-                            onChange={e => setMeal(e.target.value)} />
-                        <button type="button" className="btn btn-info  btn-sm" onClick={useCallback(() => setMeal(initialValue), [initialValue])}>Reset</button>
+                            onChange={e => setMeal(Math.trunc(e.target.value))} />
+                        <button type="button" data-testid="meal-reset" className=" btn btn-info  btn-sm " onClick={useCallback(() => setMeal(initialValue), [initialValue])}>Reset</button>
                     </div>
                     <div className="row mb-3">
-                        <FormField title="Parking" name="parking" role="$" vari={toPayParking}
+                        <FormField title="Parking" name="parking" role="$" vari={toPayParking} data-testid="parking-input"
                             value={parking}
                             onChange={e => setParking(e.target.value)} />
-                        <button type="button" className="btn btn-info  btn-sm" onClick={useCallback(() => setParking(initialValue), [initialValue])}>Reset</button>
+                        <button type="button" data-testid="parking-reset" className="btn btn-info  btn-sm" onClick={useCallback(() => setParking(initialValue), [initialValue])}>Reset</button>
                     </div>
-                    <div className="text-right font-weight-bold">Total a pagar: {toPayTotal} $</div>
+                    <div className="text-right font-weight-bold"  data-testid="total-result">Total a pagar: {toPayTotal} $</div>
 
                 </div>
             </div>
